@@ -10,6 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script src="https://js.instamojo.com/v1/checkout.js"></script>
+<script type="text/javascript"></script>
 </head>
 <body>
 	<center>
@@ -18,9 +19,16 @@
 </body>
 
 <script type="text/javascript">
+	 
 	$('#pay').on('click',function(){
-		console.log("Payment initiated");
-		Instamojo.open("https://test.instamojo.com/@urankit27");
+		// console.log("Payment initiated");
+		// Instamojo.open("https://test.instamojo.com/@urankit27");
+		fetch("http://localhost:3000/payment")
+			.then((resp) => resp.json())
+			.then(function(data){
+				console.log(data.payment_request.longurl);
+				window.location.replace(data.payment_request.longurl);
+			})
 	});
 </script>
 </html>
