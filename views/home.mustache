@@ -23,7 +23,7 @@
 	$('#pay').on('click',function(){
 		// console.log("Payment initiated");
 		// Instamojo.open("https://test.instamojo.com/@urankit27");
-		fetch("http://localhost:3000/payment")
+		fetch("http://localhost:3000/readCart")
 			.then((resp) => resp.json())
 			.then(function(data){
 				console.log(data.payment_request.longurl);
